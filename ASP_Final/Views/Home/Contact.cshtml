@@ -1,0 +1,98 @@
+﻿@model ASP_Final.Models.Contact
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function ShowContact(conInfo) {
+            var target = $("#conFrm");
+            target.empty();
+
+            if (!conInfo) {
+                target.append("No data has been received.");
+            }
+        }
+
+    </script>
+}
+
+@{
+    ViewBag.Title = "Contact Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+        <h3>Share Your Comments with Management</h3>
+        <div id="conFrm">
+            @using (Ajax.BeginForm("Contact", "Home", new AjaxOptions
+            {
+                HttpMethod = "Post",
+                InsertionMode = InsertionMode.Replace,
+                LoadingElementId = "loading",
+                LoadingElementDuration = 8000,
+                OnSuccess = "ShowContact"
+
+            }))
+            {
+
+                var branches = new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Please Select a Branch", Value = "" },
+                    new SelectListItem { Text = "Henry Downtown", Value = "1" },
+                    new SelectListItem { Text = "Henry On The Hill", Value = "2" },
+                    new SelectListItem { Text = "Henry Brentwood", Value = "3" },
+                    new SelectListItem { Text = "Henry Eastshore", Value = "4" }
+                };
+
+                <table>
+                    <tr>
+                        <td>
+                            <label>First Name</label><br />
+                            @Html.TextBoxFor(s => s.FName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Last Name</label><br />
+                            @Html.TextBoxFor(s => s.LName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Email</label><br />
+                            @Html.TextBoxFor(s => s.Email)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Confirm Email</label><br />
+                            @Html.TextBoxFor(s => s.ConfirmEmail)
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            <label>Branch</label><br />
+                            @Html.DropDownListFor(s => s.Branch, new SelectList(branches, "Value", "Text"))
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Comments</label><br />
+                            @Html.TextAreaFor(s => s.Comments)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="reset" value="Reset" />
+                            <input type="submit" value="Save" />
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+        <div id="loading" style="display: none;">
+            Thank you for sharing your comments with Henry's Bookstore Management. We will be in touch shortly via email.
+        </div>
+    
+</div>

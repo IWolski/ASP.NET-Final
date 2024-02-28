@@ -1,0 +1,10 @@
+﻿@using ASP_Final.Models;
+@*Inbound Model*@
+@model Browse
+
+@using (Html.BeginForm("Location", "Home", FormMethod.Post))
+{
+
+    <p>@Html.DropDownListFor(s => s.LocationSelected, Model.AllLocationOptions, "Please pick a Branch", new { onchange = "this.form.submit();" })</p>
+}
+

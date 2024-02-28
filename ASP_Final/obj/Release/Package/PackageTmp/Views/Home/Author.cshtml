@@ -1,0 +1,55 @@
+﻿@using System.Activities.Statements
+@using System.Web.UI.WebControls
+@using WebGrease.Css.ImageAssemblyAnalysis
+@using System.Globalization;
+@using System.Web.DynamicData
+@model IEnumerable<ASP_Final.Models.AUTHOR>
+@{
+    ViewBag.Title = "Browse by Author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <br />
+    @Html.Action("Index", "Browse")
+
+    @if (Model != null)
+    {
+        <table>
+            <tr>
+                <td>BOOK CODE</td>
+                <td>TITLE</td>
+                <td>TYPE</td>
+                <td>PRICE</td>
+                <td>PAPERBACK</td>
+                <td>PUBLISHER</td>
+            </tr>
+
+            @foreach (var author in Model)
+            {
+                foreach (var wrote in author.WROTE)
+                {
+                    <tr>
+                        <td><a href="~/BOOKs/Details/@wrote.BOOK.BOOK_CODE">@wrote.BOOK.BOOK_CODE</a></td>
+                        <td>@wrote.BOOK.TITLE</td>
+                        <td>@wrote.BOOK.TYPE</td>
+                        <td>$@Math.Round(decimal.Parse(wrote.BOOK.PRICE.ToString()), 2)</td>
+                        @if (@wrote.BOOK.PAPERBACK == "1")
+                        {
+                            <td>
+                                Yes
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                No
+                            </td>
+                        }
+                    <td>@Html.ActionLink(@wrote.BOOK.PUBLISHER.PUBLISHER_NAME, "PublishCode", "Home", new { code = wrote.BOOK.PUBLISHER_CODE }, null)</td>
+
+                    </tr>
+                }
+            }
+        </table>
+    }
+</div>

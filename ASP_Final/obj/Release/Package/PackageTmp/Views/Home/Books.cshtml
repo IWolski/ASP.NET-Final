@@ -1,0 +1,26 @@
+﻿@using System.Web.UI.WebControls
+@using WebGrease.Css.ImageAssemblyAnalysis
+@using System.Globalization;
+@using System.Web.DynamicData
+@model IEnumerable<ASP_Final.Models.PUBLISHER>
+    @{
+        ViewBag.Title = "Browse By Inventory";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+<div id="main">
+    <div id="bbox">
+            
+        @foreach (var publisher in Model)
+        {
+
+            foreach (var book in publisher.BOOK)
+            {
+                <div class="books">
+                    <a href="~/BOOKs/Details/@book.BOOK_CODE"><img src="~/Content/Images/@book.BOOK_CODE/thumb.jpg" style="width: 125px; height: 193px;"/></a>
+                </div>
+            }
+        }
+
+    </div>
+</div>

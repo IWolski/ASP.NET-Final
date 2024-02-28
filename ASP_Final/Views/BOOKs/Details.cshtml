@@ -1,0 +1,93 @@
+﻿@using ASP_Final.Controllers
+@using ASP_Final.Models
+@using WebGrease.Css.Extensions
+@model ASP_Final.Models.BOOK
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <div id="bflex">
+        <div id="b1">
+            <img src="~/Content/Images/@Html.DisplayTextFor(model => model.BOOK_CODE)/large.jpg" style="width: 397px; height: 600px;"/>
+            <p>
+                @Html.ActionLink("Back to List", "Books", "Home")
+            </p>
+        </div>
+        <div id="b2">
+            <table>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.TITLE)</td>
+                    <td>@Html.DisplayTextFor(model => model.TITLE)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.TYPE)</td>
+                    <td>@Html.DisplayTextFor(model => model.TYPE)</td>
+                </tr>
+
+
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.PRICE)</td>
+                    <td>$@Math.Round(decimal.Parse(Html.DisplayTextFor(model => model.PRICE).ToString()), 2)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.PAPERBACK)?</td>
+                    
+                    @if (Html.DisplayTextFor(model => model.PAPERBACK).ToString() == "1")
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                </tr>
+
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.PUBLISHER.PUBLISHER_NAME).ToString().Replace("_", " ")</td>
+                    <td>@Html.ActionLink(Model.PUBLISHER.PUBLISHER_NAME.ToString(), "PublishCode", "Home",new { code = Model.PUBLISHER_CODE.ToString() }, null)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.BOOK_CODE).ToString().Replace("_", " ")</td>
+                    <td>@Html.DisplayTextFor(model => model.BOOK_CODE)</td>
+                </tr>
+
+                <tr>
+                    <td>WRITTEN BY</td>
+                    <td>
+                        @foreach (var wrote in Model.WROTE)
+                        {
+                        <p>@Html.ActionLink(@wrote.AUTHOR.AUTHOR_LAST + ", " + @wrote.AUTHOR.AUTHOR_FIRST, "AuthorNum", "Home", new { aNum = wrote.AUTHOR_NUM }, null)</p>
+                        }
+                    </td>
+                </tr>
+
+
+            </table><br/><br/>
+            <table>
+                <tr>Inventory by Branch</tr>
+                <tr>
+                    <td>LOCATION</td>
+                    <td>ON HAND</td>
+                </tr>
+                @if (Model.INVENTORY != null)
+                {
+                    foreach (var inventory in Model.INVENTORY)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(@inventory.BRANCH.BRANCH_NAME, "LocationNum", "Home", new { bNum = inventory.BRANCH_NUM }, null)</td>
+                            <td>@inventory.ON_HAND.ToString()</td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>

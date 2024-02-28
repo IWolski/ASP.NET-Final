@@ -1,0 +1,39 @@
+﻿@model ASP_Final.Models.PUBLISHER
+    
+@if (Model != null)
+{
+    <table>
+        <tr>
+            <td>BOOK CODE</td>
+            <td>TITLE</td>
+            <td>TYPE</td>
+            <td>PRICE</td>
+            <td>PAPERBACK</td>
+
+        </tr>
+
+        @foreach (var book in Model.BOOK)
+        {
+            <tr>
+                <td>@book.BOOK_CODE</td>
+                <td>@book.TITLE</td>
+                <td>@book.TYPE</td>
+                <td>@book.PRICE</td>
+                @if (book.PAPERBACK == "1")
+                {
+                    <td>
+                        Yes
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        No
+                    </td>
+                }
+
+            </tr>
+        }
+
+    </table>
+}

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HenryModelStoreContainer" CdmEntityContainer="HenryEntities">
+    <EntitySetMapping Name="AUTHOR">
+      <EntityTypeMapping TypeName="HenryModel.AUTHOR">
+        <MappingFragment StoreEntitySet="AUTHOR">
+          <ScalarProperty Name="AUTHOR_NUM" ColumnName="AUTHOR_NUM" />
+          <ScalarProperty Name="AUTHOR_LAST" ColumnName="AUTHOR_LAST" />
+          <ScalarProperty Name="AUTHOR_FIRST" ColumnName="AUTHOR_FIRST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOOK">
+      <EntityTypeMapping TypeName="HenryModel.BOOK">
+        <MappingFragment StoreEntitySet="BOOK">
+          <ScalarProperty Name="BOOK_CODE" ColumnName="BOOK_CODE" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="PUBLISHER_CODE" ColumnName="PUBLISHER_CODE" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="PAPERBACK" ColumnName="PAPERBACK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BRANCH">
+      <EntityTypeMapping TypeName="HenryModel.BRANCH">
+        <MappingFragment StoreEntitySet="BRANCH">
+          <ScalarProperty Name="BRANCH_NUM" ColumnName="BRANCH_NUM" />
+          <ScalarProperty Name="BRANCH_NAME" ColumnName="BRANCH_NAME" />
+          <ScalarProperty Name="BRANCH_LOCATION" ColumnName="BRANCH_LOCATION" />
+          <ScalarProperty Name="NUM_EMPLOYEES" ColumnName="NUM_EMPLOYEES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INVENTORY">
+      <EntityTypeMapping TypeName="HenryModel.INVENTORY">
+        <MappingFragment StoreEntitySet="INVENTORY">
+          <ScalarProperty Name="BOOK_CODE" ColumnName="BOOK_CODE" />
+          <ScalarProperty Name="BRANCH_NUM" ColumnName="BRANCH_NUM" />
+          <ScalarProperty Name="ON_HAND" ColumnName="ON_HAND" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PUBLISHER">
+      <EntityTypeMapping TypeName="HenryModel.PUBLISHER">
+        <MappingFragment StoreEntitySet="PUBLISHER">
+          <ScalarProperty Name="PUBLISHER_CODE" ColumnName="PUBLISHER_CODE" />
+          <ScalarProperty Name="PUBLISHER_NAME" ColumnName="PUBLISHER_NAME" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WROTE">
+      <EntityTypeMapping TypeName="HenryModel.WROTE">
+        <MappingFragment StoreEntitySet="WROTE">
+          <ScalarProperty Name="BOOK_CODE" ColumnName="BOOK_CODE" />
+          <ScalarProperty Name="AUTHOR_NUM" ColumnName="AUTHOR_NUM" />
+          <ScalarProperty Name="SEQUENCE" ColumnName="SEQUENCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

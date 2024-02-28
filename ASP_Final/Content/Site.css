@@ -1,0 +1,146 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url(images/wood.jpg);
+    background-size: cover;
+    margin-bottom: 0px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.myNav {
+    background-color: #565656;
+    margin-bottom: 0px;
+}
+
+.wrapper {
+    width: 1000px;
+    background-color: #a2b6a3;
+    margin-top: 0px;
+    margin: auto;
+    color: black;
+    overflow:hidden;
+}
+
+hr {
+    border-color: black;
+}
+
+.myNav a {
+    color: white;
+}
+
+header {
+    background-image: url(images/books.jpg);
+    width: 1000px;
+    height: 165px;
+    text-align: center;
+}
+
+main {
+    margin-left: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+.homebox {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    color: white;
+    background-color: #565656;
+    border: 1px solid black;
+    margin: 30px;
+    margin-left: 115px;
+    padding: 20px;
+    text-align: center;
+}
+footer {
+    text-align: center;
+    margin-right: 160px;
+}
+
+#loading {
+    height: 100px;
+    width: 500px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 30px;
+    text-align: center;
+}
+
+
+table {
+    text-align: center;
+}
+tr {
+    background-color: lightgray;
+    border: 1px solid black;
+    text-align: center;
+}
+
+td {
+    background-color: #e9f0ca;
+    padding: 10px;
+    border-left: 1px solid black;
+}
+
+a {
+    color: white;
+}
+
+
+#conFrm table {
+    width: 500px;
+}
+
+#conFrm table tr td {
+    width: 300px;
+}
+
+.books {
+    margin: 15px;
+    display: inline-block;
+    text-align: center;
+}
+
+#bbox {
+    margin-right: 125px;
+    margin-left: 10px;
+}
+
+#bflex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 10px;
+}
+
+#b1 {
+    flex: 3;
+}
+#b2 {
+    flex: 5;
+}
+
+td a {
+    color: blue;
+}

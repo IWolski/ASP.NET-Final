@@ -1,0 +1,54 @@
+﻿@using System.Activities.Statements
+@using System.Web.UI.WebControls
+@using WebGrease.Css.ImageAssemblyAnalysis
+@using System.Globalization;
+@using System.Web.DynamicData
+@model IEnumerable<ASP_Final.Models.PUBLISHER>
+@{
+    ViewBag.Title = "Browse by Publisher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <br />
+    @Html.Action("Publisher", "Browse")
+
+    @if (Model != null)
+    {
+        <table>
+            <tr>
+                <td>BOOK CODE</td>
+                <td>TITLE</td>
+                <td>TYPE</td>
+                <td>PRICE</td>
+                <td>PAPERBACK</td>
+
+            </tr>
+
+            @foreach (var publisher in Model)
+            {
+                foreach (var book in publisher.BOOK)
+                {
+                    <tr>
+                        <td><a href="~/BOOKs/Details/@book.BOOK_CODE">@book.BOOK_CODE</a></td>
+                        <td>@book.TITLE</td>
+                        <td>@book.TYPE</td>
+                        <td>$@Math.Round(decimal.Parse(book.PRICE.ToString()), 2)</td>
+                        @if (book.PAPERBACK == "1")
+                        {
+                            <td>
+                                Yes
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                No
+                            </td>
+                        }
+
+                    </tr>
+                }
+            }
+        </table>
+    }
+</div>

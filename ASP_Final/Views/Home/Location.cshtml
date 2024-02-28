@@ -1,0 +1,83 @@
+﻿@using System.Activities.Statements
+@using System.Web.UI.WebControls
+@using WebGrease.Css.ImageAssemblyAnalysis
+@using System.Globalization;
+@using System.Web.DynamicData
+@model IEnumerable<ASP_Final.Models.BRANCH>
+@{
+    ViewBag.Title = "Browse by Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <br/>
+    @Html.Action("Location", "Browse")
+
+
+    @if (Model != null)
+    {
+        var i = 0;
+        <div id="bflex">
+            <div id="b1">
+                @foreach (var branch in Model)
+                {
+                    foreach (var inventory in branch.INVENTORY)
+                    {
+                        if (i == 0)
+                        {
+                            i = 1;
+                            <table>
+                                <tr>
+
+                                    <td>
+                                        BRANCH NUMBER
+                                    </td>
+                                    <td>
+                                        @inventory.BRANCH_NUM
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        BRANCH NAME
+                                    </td>
+                                    <td>
+                                        @inventory.BRANCH.BRANCH_NAME
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        NUMBER OF EMPLOYEES
+                                    </td>
+                                    <td>
+                                        @inventory.BRANCH.NUM_EMPLOYEES
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                    }
+                }
+            </div>
+            <div id="b2">
+                <table>
+                    <tr>
+                        <td>TITLE</td>
+                        <td>QUANTITY ON HAND</td>
+                    </tr>
+                    @foreach (var branch in Model)
+                    {
+                        foreach (var inventory in branch.INVENTORY)
+                        {
+
+                            <tr>
+                                <td><a href="~/BOOKs/Details/@inventory.BOOK_CODE">@inventory.BOOK.TITLE</a></td>
+                                <td>@inventory.ON_HAND</td>
+                            </tr>
+
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    }
+</div>

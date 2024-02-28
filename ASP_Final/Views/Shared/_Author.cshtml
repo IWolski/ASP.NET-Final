@@ -1,0 +1,9 @@
+﻿@using ASP_Final.Models;
+@*Inbound Model*@
+@model Browse
+
+@using (Html.BeginForm("Author", "Home", FormMethod.Post))
+{
+
+    <p>@Html.DropDownListFor(s => s.AuthorSelected, Model.AllAuthorOptions, "Please pick an Author", new { onchange = "this.form.submit();" })</p>
+}

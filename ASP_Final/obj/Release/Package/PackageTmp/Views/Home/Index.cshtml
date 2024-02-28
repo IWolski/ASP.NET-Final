@@ -1,0 +1,30 @@
+﻿@using System.Web.UI.WebControls
+@using WebGrease.Css.ImageAssemblyAnalysis
+@using System.Globalization;
+@using System.Web.DynamicData
+@model IEnumerable<ASP_Final.Models.PUBLISHER>
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <div class="homebox">
+        <p>@Html.ActionLink("Browse Inventory", "Books", "Home")</p>
+        <img src="~/Content/images/inventory.jpg" />
+    </div>
+
+    <div class="homebox">
+        <p>@Html.ActionLink("Browse by Author", "Author", "Home")</p>
+        <img src="~/Content/images/author.jpg" />
+    </div>
+
+    <div class="homebox">
+        <p>@Html.ActionLink("Browse by Publisher", "Publisher", "Home")</p>
+        <img src="~/Content/images/publisher.jpg" />
+    </div>
+
+    <div class="homebox">
+        <p>@Html.ActionLink("Browse by Location", "Location", "Home")</p>
+        <img src="~/Content/images/bookstore.jpg" />
+    </div>
+</div>

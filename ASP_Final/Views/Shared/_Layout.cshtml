@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Henry's Bookstore'</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="wrapper">
+        <header><br/><br/><font style="color: white; font-size: 30pt;">Henry's Bookstore</font></header>
+        <div class="myNav">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home Page", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Browse By Author", "Author", "Home")</li>
+                        <li>@Html.ActionLink("Browse By Location", "Location", "Home")</li>
+                        <li>@Html.ActionLink("Browse By Publisher", "Publisher", "Home")</li>
+                        <li>@Html.ActionLink("Contact Management", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container body-content">
+            @RenderBody()
+
+            <footer>
+                <p>@Html.ActionLink("Contact Management", "Contact", "Home")</p>
+                <p>&copy; @DateTime.Now.Year - Indira's ASP.NET Application</p>
+                <p>This page is created for educational use only.</p>
+                <p>No images or content will be published to the internet for public use.</p>
+                <p>Book cover images were retrieved from <a href="https://www.barnesandnoble.com/">Barnes and Noble</a>.</p>
+            </footer>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

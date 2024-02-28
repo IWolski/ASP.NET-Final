@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HenryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AUTHOR">
+    <Key>
+      <PropertyRef Name="AUTHOR_NUM" />
+    </Key>
+    <Property Name="AUTHOR_NUM" Type="Int32" Nullable="false" />
+    <Property Name="AUTHOR_LAST" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AUTHOR_FIRST" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="WROTE" Relationship="Self.FK__WROTE__AUTHOR_NU__35BCFE0A" FromRole="AUTHOR" ToRole="WROTE" />
+    <NavigationProperty Name="WROTE1" Relationship="Self.FK__WROTE__AUTHOR_NU__44FF419A" FromRole="AUTHOR" ToRole="WROTE" />
+    <NavigationProperty Name="WROTE2" Relationship="Self.FK__WROTE__AUTHOR_NU__5441852A" FromRole="AUTHOR" ToRole="WROTE" />
+  </EntityType>
+  <EntityType Name="BOOK">
+    <Key>
+      <PropertyRef Name="BOOK_CODE" />
+    </Key>
+    <Property Name="BOOK_CODE" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PUBLISHER_CODE" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="TYPE" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="PRICE" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PAPERBACK" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="PUBLISHER" Relationship="Self.FK__BOOK__PUBLISHER___32E0915F" FromRole="BOOK" ToRole="PUBLISHER" />
+    <NavigationProperty Name="PUBLISHER1" Relationship="Self.FK__BOOK__PUBLISHER___4222D4EF" FromRole="BOOK" ToRole="PUBLISHER" />
+    <NavigationProperty Name="PUBLISHER2" Relationship="Self.FK__BOOK__PUBLISHER___5165187F" FromRole="BOOK" ToRole="PUBLISHER" />
+    <NavigationProperty Name="INVENTORY" Relationship="Self.FK__INVENTORY__BOOK___33D4B598" FromRole="BOOK" ToRole="INVENTORY" />
+    <NavigationProperty Name="INVENTORY1" Relationship="Self.FK__INVENTORY__BOOK___4316F928" FromRole="BOOK" ToRole="INVENTORY" />
+    <NavigationProperty Name="INVENTORY2" Relationship="Self.FK__INVENTORY__BOOK___52593CB8" FromRole="BOOK" ToRole="INVENTORY" />
+    <NavigationProperty Name="WROTE" Relationship="Self.FK__WROTE__BOOK_CODE__36B12243" FromRole="BOOK" ToRole="WROTE" />
+    <NavigationProperty Name="WROTE1" Relationship="Self.FK__WROTE__BOOK_CODE__45F365D3" FromRole="BOOK" ToRole="WROTE" />
+    <NavigationProperty Name="WROTE2" Relationship="Self.FK__WROTE__BOOK_CODE__5535A963" FromRole="BOOK" ToRole="WROTE" />
+  </EntityType>
+  <EntityType Name="BRANCH">
+    <Key>
+      <PropertyRef Name="BRANCH_NUM" />
+    </Key>
+    <Property Name="BRANCH_NUM" Type="Int32" Nullable="false" />
+    <Property Name="BRANCH_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BRANCH_LOCATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NUM_EMPLOYEES" Type="Int32" />
+    <NavigationProperty Name="INVENTORY" Relationship="Self.FK__INVENTORY__BRANC__34C8D9D1" FromRole="BRANCH" ToRole="INVENTORY" />
+    <NavigationProperty Name="INVENTORY1" Relationship="Self.FK__INVENTORY__BRANC__440B1D61" FromRole="BRANCH" ToRole="INVENTORY" />
+    <NavigationProperty Name="INVENTORY2" Relationship="Self.FK__INVENTORY__BRANC__534D60F1" FromRole="BRANCH" ToRole="INVENTORY" />
+  </EntityType>
+  <EntityType Name="INVENTORY">
+    <Key>
+      <PropertyRef Name="BOOK_CODE" />
+      <PropertyRef Name="BRANCH_NUM" />
+    </Key>
+    <Property Name="BOOK_CODE" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="BRANCH_NUM" Type="Int32" Nullable="false" />
+    <Property Name="ON_HAND" Type="Int32" />
+    <NavigationProperty Name="BOOK" Relationship="Self.FK__INVENTORY__BOOK___33D4B598" FromRole="INVENTORY" ToRole="BOOK" />
+    <NavigationProperty Name="BOOK1" Relationship="Self.FK__INVENTORY__BOOK___4316F928" FromRole="INVENTORY" ToRole="BOOK" />
+    <NavigationProperty Name="BOOK2" Relationship="Self.FK__INVENTORY__BOOK___52593CB8" FromRole="INVENTORY" ToRole="BOOK" />
+    <NavigationProperty Name="BRANCH" Relationship="Self.FK__INVENTORY__BRANC__34C8D9D1" FromRole="INVENTORY" ToRole="BRANCH" />
+    <NavigationProperty Name="BRANCH1" Relationship="Self.FK__INVENTORY__BRANC__440B1D61" FromRole="INVENTORY" ToRole="BRANCH" />
+    <NavigationProperty Name="BRANCH2" Relationship="Self.FK__INVENTORY__BRANC__534D60F1" FromRole="INVENTORY" ToRole="BRANCH" />
+  </EntityType>
+  <EntityType Name="PUBLISHER">
+    <Key>
+      <PropertyRef Name="PUBLISHER_CODE" />
+    </Key>
+    <Property Name="PUBLISHER_CODE" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PUBLISHER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BOOK" Relationship="Self.FK__BOOK__PUBLISHER___32E0915F" FromRole="PUBLISHER" ToRole="BOOK" />
+    <NavigationProperty Name="BOOK1" Relationship="Self.FK__BOOK__PUBLISHER___4222D4EF" FromRole="PUBLISHER" ToRole="BOOK" />
+    <NavigationProperty Name="BOOK2" Relationship="Self.FK__BOOK__PUBLISHER___5165187F" FromRole="PUBLISHER" ToRole="BOOK" />
+  </EntityType>
+  <EntityType Name="WROTE">
+    <Key>
+      <PropertyRef Name="BOOK_CODE" />
+      <PropertyRef Name="AUTHOR_NUM" />
+    </Key>
+    <Property Name="BOOK_CODE" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="AUTHOR_NUM" Type="Int32" Nullable="false" />
+    <Property Name="SEQUENCE" Type="Int32" />
+    <NavigationProperty Name="AUTHOR" Relationship="Self.FK__WROTE__AUTHOR_NU__35BCFE0A" FromRole="WROTE" ToRole="AUTHOR" />
+    <NavigationProperty Name="AUTHOR1" Relationship="Self.FK__WROTE__AUTHOR_NU__44FF419A" FromRole="WROTE" ToRole="AUTHOR" />
+    <NavigationProperty Name="AUTHOR2" Relationship="Self.FK__WROTE__AUTHOR_NU__5441852A" FromRole="WROTE" ToRole="AUTHOR" />
+    <NavigationProperty Name="BOOK" Relationship="Self.FK__WROTE__BOOK_CODE__36B12243" FromRole="WROTE" ToRole="BOOK" />
+    <NavigationProperty Name="BOOK1" Relationship="Self.FK__WROTE__BOOK_CODE__45F365D3" FromRole="WROTE" ToRole="BOOK" />
+    <NavigationProperty Name="BOOK2" Relationship="Self.FK__WROTE__BOOK_CODE__5535A963" FromRole="WROTE" ToRole="BOOK" />
+  </EntityType>
+  <Association Name="FK__WROTE__AUTHOR_NU__35BCFE0A">
+    <End Role="AUTHOR" Type="Self.AUTHOR" Multiplicity="1" />
+    <End Role="WROTE" Type="Self.WROTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTHOR">
+        <PropertyRef Name="AUTHOR_NUM" />
+      </Principal>
+      <Dependent Role="WROTE">
+        <PropertyRef Name="AUTHOR_NUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WROTE__AUTHOR_NU__44FF419A">
+    <End Role="AUTHOR" Type="Self.AUTHOR" Multiplicity="1" />
+    <End Role="WROTE" Type="Self.WROTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTHOR">
+        <PropertyRef Name="AUTHOR_NUM" />
+      </Principal>
+      <Dependent Role="WROTE">
+        <PropertyRef Name="AUTHOR_NUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WROTE__AUTHOR_NU__5441852A">
+    <End Role="AUTHOR" Type="Self.AUTHOR" Multiplicity="1" />
+    <End Role="WROTE" Type="Self.WROTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTHOR">
+        <PropertyRef Name="AUTHOR_NUM" />
+      </Principal>
+      <Dependent Role="WROTE">
+        <PropertyRef Name="AUTHOR_NUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOK__PUBLISHER___32E0915F">
+    <End Role="PUBLISHER" Type="Self.PUBLISHER" Multiplicity="0..1" />
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PUBLISHER">
+        <PropertyRef Name="PUBLISHER_CODE" />
+      </Principal>
+      <Dependent Role="BOOK">
+        <PropertyRef Name="PUBLISHER_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOK__PUBLISHER___4222D4EF">
+    <End Role="PUBLISHER" Type="Self.PUBLISHER" Multiplicity="0..1" />
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PUBLISHER">
+        <PropertyRef Name="PUBLISHER_CODE" />
+      </Principal>
+      <Dependent Role="BOOK">
+        <PropertyRef Name="PUBLISHER_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOK__PUBLISHER___5165187F">
+    <End Role="PUBLISHER" Type="Self.PUBLISHER" Multiplicity="0..1" />
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PUBLISHER">
+        <PropertyRef Name="PUBLISHER_CODE" />
+      </Principal>
+      <Dependent Role="BOOK">
+        <PropertyRef Name="PUBLISHER_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INVENTORY__BOOK___33D4B598">
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="1" />
+    <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOK">
+        <PropertyRef Name="BOOK_CODE" />
+      </Principal>
+      <Dependent Role="INVENTORY">
+        <PropertyRef Name="BOOK_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INVENTORY__BOOK___4316F928">
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="1" />
+    <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOK">
+        <PropertyRef Name="BOOK_CODE" />
+      </Principal>
+      <Dependent Role="INVENTORY">
+        <PropertyRef Name="BOOK_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INVENTORY__BOOK___52593CB8">
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="1" />
+    <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOK">
+        <PropertyRef Name="BOOK_CODE" />
+      </Principal>
+      <Dependent Role="INVENTORY">
+        <PropertyRef Name="BOOK_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WROTE__BOOK_CODE__36B12243">
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="1" />
+    <End Role="WROTE" Type="Self.WROTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOK">
+        <PropertyRef Name="BOOK_CODE" />
+      </Principal>
+      <Dependent Role="WROTE">
+        <PropertyRef Name="BOOK_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WROTE__BOOK_CODE__45F365D3">
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="1" />
+    <End Role="WROTE" Type="Self.WROTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOK">
+        <PropertyRef Name="BOOK_CODE" />
+      </Principal>
+      <Dependent Role="WROTE">
+        <PropertyRef Name="BOOK_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WROTE__BOOK_CODE__5535A963">
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="1" />
+    <End Role="WROTE" Type="Self.WROTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOK">
+        <PropertyRef Name="BOOK_CODE" />
+      </Principal>
+      <Dependent Role="WROTE">
+        <PropertyRef Name="BOOK_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INVENTORY__BRANC__34C8D9D1">
+    <End Role="BRANCH" Type="Self.BRANCH" Multiplicity="1" />
+    <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BRANCH">
+        <PropertyRef Name="BRANCH_NUM" />
+      </Principal>
+      <Dependent Role="INVENTORY">
+        <PropertyRef Name="BRANCH_NUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INVENTORY__BRANC__440B1D61">
+    <End Role="BRANCH" Type="Self.BRANCH" Multiplicity="1" />
+    <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BRANCH">
+        <PropertyRef Name="BRANCH_NUM" />
+      </Principal>
+      <Dependent Role="INVENTORY">
+        <PropertyRef Name="BRANCH_NUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INVENTORY__BRANC__534D60F1">
+    <End Role="BRANCH" Type="Self.BRANCH" Multiplicity="1" />
+    <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BRANCH">
+        <PropertyRef Name="BRANCH_NUM" />
+      </Principal>
+      <Dependent Role="INVENTORY">
+        <PropertyRef Name="BRANCH_NUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HenryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AUTHOR" EntityType="Self.AUTHOR" />
+    <EntitySet Name="BOOK" EntityType="Self.BOOK" />
+    <EntitySet Name="BRANCH" EntityType="Self.BRANCH" />
+    <EntitySet Name="INVENTORY" EntityType="Self.INVENTORY" />
+    <EntitySet Name="PUBLISHER" EntityType="Self.PUBLISHER" />
+    <EntitySet Name="WROTE" EntityType="Self.WROTE" />
+    <AssociationSet Name="FK__WROTE__AUTHOR_NU__35BCFE0A" Association="Self.FK__WROTE__AUTHOR_NU__35BCFE0A">
+      <End Role="AUTHOR" EntitySet="AUTHOR" />
+      <End Role="WROTE" EntitySet="WROTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WROTE__AUTHOR_NU__44FF419A" Association="Self.FK__WROTE__AUTHOR_NU__44FF419A">
+      <End Role="AUTHOR" EntitySet="AUTHOR" />
+      <End Role="WROTE" EntitySet="WROTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WROTE__AUTHOR_NU__5441852A" Association="Self.FK__WROTE__AUTHOR_NU__5441852A">
+      <End Role="AUTHOR" EntitySet="AUTHOR" />
+      <End Role="WROTE" EntitySet="WROTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOK__PUBLISHER___32E0915F" Association="Self.FK__BOOK__PUBLISHER___32E0915F">
+      <End Role="PUBLISHER" EntitySet="PUBLISHER" />
+      <End Role="BOOK" EntitySet="BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOK__PUBLISHER___4222D4EF" Association="Self.FK__BOOK__PUBLISHER___4222D4EF">
+      <End Role="PUBLISHER" EntitySet="PUBLISHER" />
+      <End Role="BOOK" EntitySet="BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOK__PUBLISHER___5165187F" Association="Self.FK__BOOK__PUBLISHER___5165187F">
+      <End Role="PUBLISHER" EntitySet="PUBLISHER" />
+      <End Role="BOOK" EntitySet="BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INVENTORY__BOOK___33D4B598" Association="Self.FK__INVENTORY__BOOK___33D4B598">
+      <End Role="BOOK" EntitySet="BOOK" />
+      <End Role="INVENTORY" EntitySet="INVENTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INVENTORY__BOOK___4316F928" Association="Self.FK__INVENTORY__BOOK___4316F928">
+      <End Role="BOOK" EntitySet="BOOK" />
+      <End Role="INVENTORY" EntitySet="INVENTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INVENTORY__BOOK___52593CB8" Association="Self.FK__INVENTORY__BOOK___52593CB8">
+      <End Role="BOOK" EntitySet="BOOK" />
+      <End Role="INVENTORY" EntitySet="INVENTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WROTE__BOOK_CODE__36B12243" Association="Self.FK__WROTE__BOOK_CODE__36B12243">
+      <End Role="BOOK" EntitySet="BOOK" />
+      <End Role="WROTE" EntitySet="WROTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WROTE__BOOK_CODE__45F365D3" Association="Self.FK__WROTE__BOOK_CODE__45F365D3">
+      <End Role="BOOK" EntitySet="BOOK" />
+      <End Role="WROTE" EntitySet="WROTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WROTE__BOOK_CODE__5535A963" Association="Self.FK__WROTE__BOOK_CODE__5535A963">
+      <End Role="BOOK" EntitySet="BOOK" />
+      <End Role="WROTE" EntitySet="WROTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INVENTORY__BRANC__34C8D9D1" Association="Self.FK__INVENTORY__BRANC__34C8D9D1">
+      <End Role="BRANCH" EntitySet="BRANCH" />
+      <End Role="INVENTORY" EntitySet="INVENTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INVENTORY__BRANC__440B1D61" Association="Self.FK__INVENTORY__BRANC__440B1D61">
+      <End Role="BRANCH" EntitySet="BRANCH" />
+      <End Role="INVENTORY" EntitySet="INVENTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INVENTORY__BRANC__534D60F1" Association="Self.FK__INVENTORY__BRANC__534D60F1">
+      <End Role="BRANCH" EntitySet="BRANCH" />
+      <End Role="INVENTORY" EntitySet="INVENTORY" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

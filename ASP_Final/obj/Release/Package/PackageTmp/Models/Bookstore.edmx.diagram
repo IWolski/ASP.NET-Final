@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e22deaf85dd54b0a8450f98d9127f1a3" Name="Diagram1">
+        <EntityTypeShape EntityType="HenryModel.AUTHOR" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HenryModel.BOOK" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="HenryModel.BRANCH" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HenryModel.INVENTORY" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HenryModel.PUBLISHER" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HenryModel.WROTE" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="HenryModel.FK__WROTE__AUTHOR_NU__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__WROTE__AUTHOR_NU__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__WROTE__AUTHOR_NU__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__BOOK__PUBLISHER___32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__BOOK__PUBLISHER___4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__BOOK__PUBLISHER___5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__INVENTORY__BOOK___33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__INVENTORY__BOOK___4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__INVENTORY__BOOK___52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__WROTE__BOOK_CODE__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__WROTE__BOOK_CODE__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__WROTE__BOOK_CODE__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__INVENTORY__BRANC__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__INVENTORY__BRANC__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="HenryModel.FK__INVENTORY__BRANC__534D60F1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
